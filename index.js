@@ -1,7 +1,14 @@
-'use strict';
+/**
+ * Sample code to create a workflow builder in Rappid Framework
+ * 
+ * @author Krunal Nanda
+ * 
+ */
 
 (function() {
-
+	
+	/*Create graph and paper*/
+	
     var graph = new joint.dia.Graph;
     var paper = new joint.dia.Paper({
         el: $('#paper').css('width', 800),
@@ -11,6 +18,8 @@
         model: graph
     });
 
+    /* Initialize stencil to add items for drag and drop */
+    
     var stencil = new joint.ui.Stencil({ 
         graph: graph, 
         paper: paper,
@@ -19,7 +28,9 @@
     });
    
     $('#stencil-container').append(stencil.render().el);
-
+    
+    //Create shapes
+    
     var r = new joint.shapes.basic.Rect({ 
         position: { x: 10, y: 10 }, size: { width: 70, height: 40 },
         attrs: { rect: { fill: '#31D0C6',rx:30,ry:30}, text: { text: 'Start', fill: 'white' } ,magnet:true}
@@ -46,6 +57,9 @@
         }
     });
     
+    
+    // Set Halo to the elements for linking, deleting and resizing
+    
     paper.on('cell:pointerup', function(cellView) {
         // We don't want a Halo for links.
         if (cellView.model instanceof joint.dia.Link) return;
@@ -55,6 +69,8 @@
     });
 
     stencil.load([r, c, c2,diamond]);
+    
+    //Prefined elements and linked for sample workflow
     
     var r1 = new joint.shapes.basic.Rect({ 
         position: { x: 100, y: 10 }, size: { width: 70, height: 40 },
@@ -92,6 +108,8 @@
         position: { x: 200, y: 150 }, size: { width: 70, height: 40 },
         attrs: { rect: { fill: '#4B4A67' }, text: { text: 'Feedback', fill: 'white' },magnet:true }
     });
+    
+    //Adding cells to graph
     
     graph.addCells([r1,r2,r3,r4,r5,d2,
     		new joint.dia.Link({
