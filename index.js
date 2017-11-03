@@ -45,6 +45,10 @@
         position: { x: 10, y: 70 }, size: { width: 70, height: 40 },
         attrs: { rect: { fill: '#4B4A67' }, text: { text: 'Step', fill: 'white' },magnet:true }
     });
+    var fd = new joint.shapes.basic.Rect({ 
+        position: { x: 10, y: 140 }, size: { width: 70, height: 40 },
+        attrs: { rect: { fill: '#4B4A67' }, text: { text: 'Feedback', fill: 'white' },magnet:true }
+    });
     var diamond = new joint.shapes.basic.Path({
         size: { width: 70, height: 70 },
         position : {x:100,y:70},
@@ -68,7 +72,7 @@
         halo.render();
     });
 
-    stencil.load([r, c, c2,diamond]);
+    stencil.load([r, c, c2,diamond,fd]);
     
     //Prefined elements and linked for sample workflow
     
